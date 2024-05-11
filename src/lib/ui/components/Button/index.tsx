@@ -3,10 +3,17 @@ import React from "react";
 
 interface ButtonProps {
   variant: "primary" | "secondary" | "danger";
-  onClick: () => void;
+  isLoading?: boolean,
+  onClick: (e: React.FormEvent<Element>) => void;
+  children: React.ReactNode
 }
 
-const Button: React.FC<ButtonProps> = ({ variant, onClick, children }) => {
+const Button: React.FC<ButtonProps> = ({ variant, onClick, children, isLoading }) => {
+
+  const handleOnClick = (event: React.FormEvent<Element>) => {
+    onClick(event);
+  };
+
   let buttonStyle = "";
   switch (variant) {
     case "primary":
@@ -23,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({ variant, onClick, children }) => {
   }
 
   return (
-    <button className={`px-4 py-2 rounded ${buttonStyle}`} onClick={onClick}>
+    <button disabled={isLoading} className={`px-4 py-2 rounded ${buttonStyle} ${isLoading ? 'bg-gray-300' : ''}`} onClick={handleOnClick}>
       {children}
     </button>
   );

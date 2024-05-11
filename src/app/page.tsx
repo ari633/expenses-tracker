@@ -1,10 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import Button from "@/lib/ui/components/Button";
 
-export default function Home() {
+export default function Page() {
   const router = useRouter();
 
   return (
@@ -13,10 +12,10 @@ export default function Home() {
         Welcome to Expenses Tracker App
       </h1>
       <div className="pt-8 mx-auto max-w-xl flex justify-center grid gap-4 grid-cols-2">
-        <Button variant="primary" onClick={() => router.push("/signin")}>
+        <Button variant="primary" onClick={() => router.push("/signin")} isLoading={false}>
           Sign In
         </Button>
-        <Button variant="secondary" onClick={() => router.push("/signup")}>
+        <Button variant="secondary" onClick={() => router.push("/signup")} isLoading={false}>
           Sign Up
         </Button>
       </div>
