@@ -35,8 +35,8 @@ const TextField: React.FC<TextFieldProps> = ({
   };
 
   return (
-    <div className="mb-4">
-      <label className="block mb-2">
+    <div className="md:mb-4">
+      <label className="block md:mb-2">
         {label}
         <input
           required={required}

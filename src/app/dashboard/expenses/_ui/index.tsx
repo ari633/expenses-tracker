@@ -152,7 +152,7 @@ export default function UI() {
   ]
   return (
     <div className="mx-auto mt-4">
-      <form className="grid grid-cols-4 gap-4">
+      <form className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <TextField
           label="Amount"
           type="number"
@@ -178,7 +178,7 @@ export default function UI() {
           label="Category"
           errMessage={formErrors.category}
         />
-        <div className="mt-7">
+        <div className="md:mt-7">
           <Button
             variant="primary"
             onClick={(e) => handleSubmit(e)}
@@ -188,7 +188,7 @@ export default function UI() {
           </Button>
         </div>
       </form>
-      {data.length > 0 && <><a href="/api/export" className="bg-gray-500 p-2">Export</a><br /><br /></>}
+      {data.length > 0 && <div className="pb-10 pt-10"><a href="/api/export" className="bg-gray-500 p-2">Export</a></div>}
       
       {data.length > 0 ? <Table data={data} actions={actionTable}/> : "No Data"}
     </div>

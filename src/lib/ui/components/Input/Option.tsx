@@ -20,8 +20,8 @@ const Options: React.FC<OptionsProps> = ({ options, name, errMessage, label, onS
   };
 
   return (
-    <div className="mb-4">
-      <label className="block mb-2">
+    <div className="md:mb-4">
+      <label className="block md:mb-2">
         {label}
         <select
           name={name}

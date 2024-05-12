@@ -92,7 +92,7 @@ export default function Page() {
     <>
       <h1 className="text-2xl text-center font-bold mb-8">Categories</h1>
       <div className="max-w-xl mx-auto">
-        <form className="grid grid-cols-4 gap-4">
+        <form className="grid grid-cols-1 md:grid-cols-4 gap-4 pb-4">
           <div className="col-span-3">
             <TextField
               placeholder="Input Category Name"
