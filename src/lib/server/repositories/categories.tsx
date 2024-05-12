@@ -23,7 +23,7 @@ const CategoryModel = {
 
   getMyCategory: (userId: number): Promise<Category[] | unknown[]> => {
     return new Promise((resolve, reject) => {
-      db.all('SELECT name FROM categories WHERE user_id = ? OR user_id IS NULL ORDER BY id DESC', [userId], (err, rows) => {
+      db.all('SELECT id, name FROM categories WHERE user_id = ? OR user_id IS NULL ORDER BY id DESC', [userId], (err, rows) => {
         if (err) reject(err);
         resolve(rows);
       });

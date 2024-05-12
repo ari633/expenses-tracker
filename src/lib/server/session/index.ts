@@ -1,7 +1,6 @@
 import 'server-only'
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
-import { cache } from 'react'
 
 const secretKey = process.env.SESSION_SECRET
 const encodedKey = new TextEncoder().encode(secretKey)
@@ -36,7 +35,20 @@ export async function createSession(userId: number | undefined) {
     expires: expiresAt,
     sameSite: 'lax',
     path: '/',
-  })
+  });
+
+  cookies().set('session', session, {
+    httpOnly: true,
+    secure: true,
+    expires: expiresAt,
+    sameSite: 'lax',
+    path: '/',
+  });
+
+}
+
+export function deleteSession() {
+  cookies().delete('session')
 }
 
 export const verifySession = async () => {

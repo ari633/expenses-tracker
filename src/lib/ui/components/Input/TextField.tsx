@@ -3,15 +3,17 @@ import React, { useState, useEffect } from "react";
 interface TextFieldProps {
   label?: string;
   required?: boolean;
+  type?: string,
   placeholder: string;
-  value: string;
+  value: string | number;
   name: string;
-  errMessage: string | string[];
+  errMessage: string | string[] | undefined;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const TextField: React.FC<TextFieldProps> = ({
   label,
+  type = 'text',
   onChange,
   value,
   placeholder,
@@ -39,7 +41,7 @@ const TextField: React.FC<TextFieldProps> = ({
         <input
           required={required}
           name={name}
-          type="text"
+          type={type}
           placeholder={placeholder}
           onChange={handleOnChange}
           value={value}

@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import TextField from "@/lib/ui/components/Input/TextField";
 import Button from "@/lib/ui/components/Button";
 import { NewFetcher } from "@/lib/ui/helpers/fetcher";
-import { useRouter } from "next/navigation";
 import { z } from "zod";
 import Table from "@/lib/ui/components/Table";
 
@@ -21,7 +20,6 @@ const schema = z.object({
 });
 
 export default function Page() {
-  const router = useRouter();
   const [formValues, setFormValues] = useState<FormStateValues>({
     name: "",
   });
@@ -34,7 +32,12 @@ export default function Page() {
   useEffect(() => {
     NewFetcher("/api/category", "GET").then((resp: any) => {
       if (resp?.categories) {
-        setData(resp?.categories);
+        const d = resp?.categories.map((item: any) => {
+          return {
+            name: item.name,
+          };
+        });
+        setData(d);
       }
     });
   }, []);

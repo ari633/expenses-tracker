@@ -19,10 +19,4 @@ describe("Home", () => {
     expect(screen.getByText('Sign Up')).toBeDefined();
 
   });
-
-  // it('navigates to /signin when Sign In button is clicked', async () => {
-  //   render(<Home />);
-  //   await waitFor(() => fireEvent.click(screen.getByText('Sign In')));
-  //   expect(jest.fn()).toHaveBeenCalledWith('/signin');
-  // });
 });

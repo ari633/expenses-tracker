@@ -5,12 +5,14 @@ import { cookies } from 'next/headers'
 // 1. Specify protected and public routes
 const protectedRoutes = ['/dashboard']
 const publicRoutes = ['/signin', '/signup', '/']
+const protectedAPI = ['/api/category', '/api/expenses']
  
 export default async function middleware(req: NextRequest) {
   // 2. Check if the current route is protected or public
   const path = req.nextUrl.pathname
   const isProtectedRoute = protectedRoutes.includes(path)
   const isPublicRoute = publicRoutes.includes(path)
+  const isProtectedAPI = protectedAPI.includes(path)
  
   // 3. Decrypt the session from the cookie
   const cookie = cookies().get('session')?.value
@@ -29,11 +31,19 @@ export default async function middleware(req: NextRequest) {
   ) {
     return NextResponse.redirect(new URL('/dashboard', req.nextUrl))
   }
- 
+
+  // 7. request by api
+  if (isProtectedAPI && !session?.userId) {
+    return Response.json(
+      { success: false, message: 'authentication failed' },
+      { status: 401 }
+    )
+  }
+
   return NextResponse.next()
 }
  
 // Routes Middleware should not run on
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
+  matcher: ['/((?!test|_next/static|_next/image|.*\\.png$).*)'],
 }
