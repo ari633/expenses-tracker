@@ -2,9 +2,11 @@
 ## Overview
 - This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-- using SQLite to store data
+- Using SQLite to store data
 
-- using JWT (JSON Web Tokens) for token-based authentication.
+- Using JWT (JSON Web Tokens) for token-based authentication.
+
+- Exchange token between client and server using httpCookies
 
 
 ### Live Demo:
