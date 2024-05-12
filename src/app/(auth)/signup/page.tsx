@@ -107,6 +107,7 @@ export default function Page() {
         errMessage={formErrors.username ? formErrors.username : ""}
       />
       <TextField
+        type="password"
         label="Password"
         placeholder="Password"
         name="password"
@@ -115,6 +116,7 @@ export default function Page() {
         errMessage={formErrors.password ? formErrors.password : ""}
         />
       <TextField
+        type="password"
         label="Password Confirm"
         placeholder="Password Confirm"
         name="password_confirm"

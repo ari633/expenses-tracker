@@ -2,7 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcrypt');
 
 async function initialize() {
-  const db = new sqlite3.Database('./expenses.db', (err) => {
+  const db = new sqlite3.Database('/tmp/expenses.db', (err) => {
     if (err) {
       console.error('Error opening database', err);
       return;

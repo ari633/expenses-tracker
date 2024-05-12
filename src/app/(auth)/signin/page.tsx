@@ -92,6 +92,7 @@ export default function Page() {
         errMessage={formErrors.username ? formErrors.username : ""}
       />
       <TextField
+        type="password"
         label="Password"
         placeholder="Password"
         name="password"

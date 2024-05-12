@@ -188,7 +188,8 @@ export default function UI() {
           </Button>
         </div>
       </form>
-      <a href="/api/export" className="bg-gray-500 p-2">Export</a><br/><br/>
+      {data.length > 0 && <><a href="/api/export" className="bg-gray-500 p-2">Export</a><br /><br /></>}
+      
       {data.length > 0 ? <Table data={data} actions={actionTable}/> : "No Data"}
     </div>
   );
